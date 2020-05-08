@@ -1,0 +1,114 @@
+.addcake-con {
+    min-height: 90vh;
+    width: 100%;
+    background-color: rgb(190, 187, 187);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-con {
+    width: 90%;
+    min-height: 25rem;
+    background-color: rgb(71, 69, 69);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 25px;
+}
+.image-con{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 8rem;
+    align-items: center;
+    margin: 10px 0px;
+}
+ p {
+    color: rgb(204, 200, 200);
+    font-size: 0.9rem;
+}
+.image-div{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 6rem;
+    margin: 5px;
+}
+hr {
+    width: 100%;
+    border: 2px solid rgb(214, 103, 103);
+}
+
+.image-div [type="text"]{
+    width: 100%;
+    height: 1.5rem;
+    color: rgb(199, 194, 194);
+}
+.field-array {
+    width: 100%;
+}
+[type="text"]{
+    width: 80%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid saddlebrown;
+    height: 1.5rem;
+    margin: 10px;
+    color: rgb(199, 194, 194);
+}
+
+[type="text"]:focus, [type="number"], .select-box{
+    outline: none;
+}
+
+.price-con {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+    min-height: 8rem;
+}
+
+.price-div {
+    width: 100%;
+    min-height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.select-box{
+    background: none;
+    border: none;
+    border-bottom: 2px solid saddlebrown;
+    color: rgb(187, 183, 183);
+    font-size: 0.9rem;
+}
+[type="number"]{
+    background: none;
+    border: none;
+    border-bottom: 2px solid saddlebrown;
+    color: rgb(175, 174, 174);
+    width: 8rem;
+    font-size: 1.1rem;
+    padding-left: 3px;
+}
+
+button {
+    width: 8rem;
+    height: 3rem;
+    font-size: 1rem;
+    color: lightsalmon;
+    background: none;
+    border: none;
+}
+
+button:focus{
+    outline: none;
+}
