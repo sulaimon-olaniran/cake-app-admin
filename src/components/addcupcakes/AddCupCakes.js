@@ -1,12 +1,15 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { withFormik, Form, Field, FieldArray } from 'formik'
 import { db } from '../../services/Firebase'
 import ImageUpload from '../images/ImageUpload'
 
 
-const AddCupCakes = ({ values }) => {
+const AddCupCakes = ({ loggedIn, values }) => {
+    if (!loggedIn) return <Redirect to ={{ pathname: "/" }} />
     return (
         <div className="addcake-con">
+            <h3>Add Cupcakes to the mix</h3>
             <ImageUpload />
             <Form className="form-con">
                 <Field type="text" name="cakeName" placeholder="Cake's Name" />

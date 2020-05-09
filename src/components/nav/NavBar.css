@@ -8,7 +8,7 @@
 }
 
 .logo-div{
-    width: 30%;
+    width: 25%;
 }
 
 .links-con {
@@ -18,11 +18,16 @@
     align-items: center;
     list-style: none;
 }
+.links-con button {
+    padding: 0;
+    margin: 0;
+    width: 6rem;
+}
 .hide-links{
     display: none;
 }
 .links-wrapper{
-    width : 50%
+    width : 60%
 }
 
 a{

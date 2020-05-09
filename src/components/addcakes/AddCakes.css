@@ -7,6 +7,11 @@
     justify-content: space-around;
     align-items: center;
 }
+.addcake-con h3 {
+    color: rgb(128, 125, 125);
+    border-bottom: 1.5px solid saddlebrown;
+    padding-bottom: 3px;
+}
 
 .form-con {
     width: 90%;

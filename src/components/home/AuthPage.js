@@ -3,15 +3,13 @@ import { auth } from '../../services/Firebase'
 import './AuthPage.css'
 import { withFormik, Form, Field } from 'formik'
 
-const AuthPage = ({ loggedIn, status }) => {
-    console.log(loggedIn)
+const AuthPage = ({ loggedIn, status, isSubmitting }) => {
+
     const signOutUser = () => {
         auth.signOut()
     }
-
     return (
         <div className="form-wrapper">
-
             {
                 !loggedIn ?
 
@@ -21,6 +19,7 @@ const AuthPage = ({ loggedIn, status }) => {
                             <Field type="password" name="password" placeholder="Password.." />
                             {!!status && <small style={{ color: "red" }}>User doesn't exist</small>}
                             <Field type="submit" value="Log In" />
+                             {isSubmitting && <small style={{ color: "green" }}>Logging In...</small>}
                         </Form>
                     </div>
                     :
@@ -34,10 +33,12 @@ const AuthPage = ({ loggedIn, status }) => {
                         <div>
                             <button onClick={signOutUser}>Sign Out</button>
                         </div>
-                    </div>}
+                    </div>
+            }
 
         </div>
     )
+
 }
 const FormikAuthPage = withFormik({
     mapPropsToValues() {
@@ -47,11 +48,14 @@ const FormikAuthPage = withFormik({
         }
     },
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, setSubmitting }) {
         console.log(values)
         const email = values.email
         const password = values.password
         auth.signInWithEmailAndPassword(email, password)
+        .then(()=>{
+            setSubmitting(true)
+        })
             .catch(error => setStatus(error.message))
 
     }
