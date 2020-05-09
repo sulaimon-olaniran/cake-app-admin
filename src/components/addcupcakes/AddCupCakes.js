@@ -5,7 +5,7 @@ import { db } from '../../services/Firebase'
 import ImageUpload from '../images/ImageUpload'
 
 
-const AddCupCakes = ({ loggedIn, values }) => {
+const AddCupCakes = ({ loggedIn, values, isSubmitting }) => {
     if (!loggedIn) return <Redirect to ={{ pathname: "/" }} />
     return (
         <div className="addcake-con">
@@ -72,8 +72,9 @@ const AddCupCakes = ({ loggedIn, values }) => {
                     }
                 </FieldArray>
 
-                <button type="submit">SUBMIT</button>
+                <button type="submit" disabled={isSubmitting}>SUBMIT</button>
             </Form>
+            { isSubmitting && <small>Submitting Your data</small>}
         </div>
     )
 }
@@ -93,16 +94,18 @@ const FormikAddCupCakes = withFormik({
     },
 
 
-    handleSubmit(values) {
-        console.log(values)
-    
+    handleSubmit(values, { resetForm, setSubmitting}) {
         db.collection('cupcakes')
             .add({
                 name: values.cakeName,
                 imagesUrl : values.imagesUrl,
                 priceList : values.priceList
             })
-            .then(() => console.log("Success"))
+            .then(() => {
+                alert("Successly Added")
+                setSubmitting(false)
+                resetForm()
+            })
             .catch(error => console.log(error))
     }
 

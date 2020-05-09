@@ -6,7 +6,7 @@ import './AddCakes.css'
 import ImageUpload from '../images/ImageUpload'
 
 
-const AddCakes = ({ loggedIn, values }) => {
+const AddCakes = ({ loggedIn, values, isSubmitting }) => {
    if (!loggedIn)  return <Redirect  to="/" />
     return (
         <div className="addcake-con">
@@ -73,8 +73,9 @@ const AddCakes = ({ loggedIn, values }) => {
                     }
                 </FieldArray>
 
-                <button type="submit">SUBMIT</button>
+                <button type="submit" disabled={isSubmitting}>SUBMIT</button>
             </Form>
+            { isSubmitting && <small>Submitting Your data</small>}
         </div>
     )
 }
@@ -94,16 +95,18 @@ const FormikAddCakes = withFormik({
     },
 
 
-    handleSubmit(values) {
-        console.log(values)
-    
+    handleSubmit(values, { resetForm, setSubmitting}) {
         db.collection('cakes')
             .add({
                 name: values.cakeName,
                 imagesUrl : values.imagesUrl,
                 priceList : values.priceList
             })
-            .then(() => console.log("Success"))
+            .then(() =>{
+                alert("Data uploaded successful")
+                setSubmitting(false)
+                resetForm()
+            })
             .catch(error => console.log(error))
     }
 

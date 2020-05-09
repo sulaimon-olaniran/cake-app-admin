@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 15px;
 }
 .addcake-con h3 {
     color: rgb(128, 125, 125);
