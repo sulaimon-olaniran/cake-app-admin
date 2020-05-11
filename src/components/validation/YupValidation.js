@@ -13,7 +13,7 @@ export const YupValidation = yup.object().shape({
     .of(
       yup.object({
         size: yup.string().required(),
-        price: yup.string().required("Include price of cake")
+        price: yup.number().required("Include price of cake")
       })
     )
     .strict()
