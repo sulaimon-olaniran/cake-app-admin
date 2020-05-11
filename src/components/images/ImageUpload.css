@@ -1,7 +1,7 @@
 .upload-image-con {
     width: 90%;
     background-color: rgb(71, 69, 69);
-    min-height: 35rem;
+    min-height: 50rem;
     margin: 10px 0px;
     border-radius: 25px;
     display: flex;
@@ -60,7 +60,7 @@ progress {
 
   .image-display-con {
       width: 100%;
-      height: 23rem;
+      height: 40rem;
       display: flex;
       flex-direction: column;
       align-items: center;

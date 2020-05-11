@@ -19,6 +19,11 @@ const ImageUpload = () => {
     }
   }
 
+  const copyUrl = () => {
+    navigator.clipboard.writeText(url)
+    alert("Url Copied")
+  }
+
   const handleSubmit = () => {
     console.log("Uploaded")
     const uploadTask = storage.ref(`images/${image.name}`).put(image)
@@ -69,8 +74,13 @@ const ImageUpload = () => {
         <button onClick={handleSubmit} disabled={disabled} >UPLOAD IMAGE</button>
 
         <input type="text" defaultValue={url} id="imageUrl" />
+
+        <div className="uploaded-image">
+           <img src={url ? url : imagePlace} alt="Uploaded" />
+        </div>
+
         <button
-          onClick={() => navigator.clipboard.writeText(url)}
+          onClick={copyUrl}
         >
           COPY URL
         </button>

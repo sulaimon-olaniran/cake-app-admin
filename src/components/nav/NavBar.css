@@ -7,10 +7,6 @@
     background-color: rgb(112, 110, 110);
 }
 
-.logo-div{
-    width: 25%;
-}
-
 .links-con {
     width: 100%;
     display: flex;
@@ -27,7 +23,7 @@
     display: none;
 }
 .links-wrapper{
-    width : 60%
+    width : 100%
 }
 
 a{

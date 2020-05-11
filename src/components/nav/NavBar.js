@@ -13,9 +13,6 @@ const NavBar = ({ loggedIn }) => {
     return (
         <div className="navbar-con">
 
-            <div className="logo-div">
-                <h2>Admin</h2>
-            </div>
             <div className="links-wrapper">
                 <ul className={handleLinkClass}>
                     <NavLink to='/addcakes'>

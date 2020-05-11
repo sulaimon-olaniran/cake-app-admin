@@ -4,16 +4,19 @@ import { Redirect } from 'react-router-dom'
 import { db } from '../../services/Firebase'
 import './AddCakes.css'
 import ImageUpload from '../images/ImageUpload'
+import { YupValidation } from '../validation/YupValidation'
 
 
-const AddCakes = ({ loggedIn, values, isSubmitting }) => {
+const AddCakes = ({ loggedIn, values, isSubmitting, errors, touched }) => {
    if (!loggedIn)  return <Redirect  to="/" />
     return (
         <div className="addcake-con">
             <h3>Add Cakes to the mix</h3>
             <ImageUpload />
             <Form className="form-con">
+
                 <Field type="text" name="cakeName" placeholder="Cake's Name" />
+                {touched.cakeName && errors.cakeName && <small>{errors.cakeName}</small>}
 
                 <FieldArray name="imagesUrl" >
                     {
@@ -37,6 +40,7 @@ const AddCakes = ({ loggedIn, values, isSubmitting }) => {
                         )
                     }
                 </FieldArray>
+                {touched.imagesUrl && errors.imagesUrl && <small>{errors.imagesUrl}</small>}
 <hr/>
                 <FieldArray name="priceList">
                     {
@@ -72,6 +76,7 @@ const AddCakes = ({ loggedIn, values, isSubmitting }) => {
 
                     }
                 </FieldArray>
+                {touched.priceList && errors.priceList &&  <small>{errors.priceList[0].price}</small>}
 
                 <button type="submit" disabled={isSubmitting}>SUBMIT</button>
             </Form>
@@ -93,7 +98,7 @@ const FormikAddCakes = withFormik({
             }]
         }
     },
-
+    validationSchema: YupValidation,
 
     handleSubmit(values, { resetForm, setSubmitting}) {
         db.collection('cakes')

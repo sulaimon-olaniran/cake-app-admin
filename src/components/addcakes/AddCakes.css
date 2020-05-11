@@ -13,6 +13,9 @@
     border-bottom: 1.5px solid saddlebrown;
     padding-bottom: 3px;
 }
+small {
+    color: rgb(238, 83, 83);
+}
 
 .form-con {
     width: 90%;
